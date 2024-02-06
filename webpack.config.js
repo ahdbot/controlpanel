@@ -7,12 +7,13 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
   entry: {
     'app': './src/index.js',
+    'assets/js/banner': './src/assets/js/banner.js',
   },
 
   output: {
     publicPath: "/",
     path: path.join(__dirname, '/app'),
-    filename: 'app.js'
+    filename: '[name].js'
 
   },
   devServer: {
@@ -77,7 +78,16 @@ module.exports = {
           }
         ]
       },
-
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
 
 
     ]
@@ -102,6 +112,7 @@ module.exports = {
       filename: "components/button.html",
 
       template: "./src/components/button.html",
+      chunks: ['app']
 
     }),
     new HtmlWebpackPlugin({
@@ -109,6 +120,23 @@ module.exports = {
       filename: "components/textfiled.html",
 
       template: "./src/components/textfiled.html",
+      chunks: ['app']
+
+    }),
+    new HtmlWebpackPlugin({
+
+      filename: "components/card.html",
+
+      template: "./src/components/card.html",
+      chunks: ['app']
+
+    }),
+    new HtmlWebpackPlugin({
+
+      filename: "components/banner.html",
+
+      template: "./src/components/banner.html",
+      chunks: ['app', 'assest/js/banner']
 
     }),
 
