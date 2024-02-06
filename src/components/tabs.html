@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs Component's page</title>
+</head>
+
+<body>
+    <div class="component-container">
+        <div class="c-tabs">
+            <div class="c-tabs__control">
+                <span class="c-tabs__tab  js-tab-link is-active" data-index="orders">طلبات بحاجة لمراجهة</span>
+                <span class="c-tabs__tab js-tab-link" data-index="products"> منتجات على وشك النفاذ</span>
+                <span class="c-tabs__tab js-tab-link" data-index="clients"> زبائن جدد</span>
+            </div>
+
+            <div class="c-tabs__content">
+                <div class="c-tabs__tabarea js-tabarea is-active" data-index="orders">tab1</div>
+                <div class="c-tabs__tabarea js-tabarea" data-index=" products"> tab2</div>
+                <div class="c-tabs__tabarea js-tabarea" data-index=" clients">tab3</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

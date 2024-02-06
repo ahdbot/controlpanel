@@ -139,7 +139,22 @@ module.exports = {
       chunks: ['app', 'assest/js/banner']
 
     }),
+    new HtmlWebpackPlugin({
 
+      filename: "components/list.html",
+
+      template: "./src/components/list.html",
+      chunks: ['app']
+
+    }),
+    new HtmlWebpackPlugin({
+
+      filename: "components/tabs.html",
+
+      template: "./src/components/tabs.html",
+      chunks: ['app']
+
+    }),
   ],
 
 }
