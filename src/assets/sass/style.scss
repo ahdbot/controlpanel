@@ -2,21 +2,19 @@
 @import "config/layout";
 @import "config/colors";
 
-
-@import "utilites/spacing";
+@import "utilities/spacing";
 
 @import "base/fonts";
-
 @import "base/global";
-
 @import "base/typography";
-
-
 @import "base/links";
+@import "components/demo";
+@import "components/components.scss";
 
 
-$background-color: sliver;
 
-body {
-    background-color:$background-color ;
+$background-color: silver;
+body{
+  background-color: $background-color;
 }
+

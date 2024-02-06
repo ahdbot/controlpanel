@@ -27,4 +27,3 @@ fs.readFile( "./src/components/template.html", "utf8", (err, source) => {
         }
     });
 });
- 

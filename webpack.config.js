@@ -5,95 +5,114 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
-    entry: {
-        'app': './src/index.js',
+  entry: {
+    'app': './src/index.js',
+  },
+
+  output: {
+    publicPath: "/",
+    path: path.join(__dirname, '/app'),
+    filename: 'app.js'
+
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "/app"),
     },
-
-    output: {
-        publicPath: '',
-        path: path.join(__dirname, "/app"),
-
-        filename: "app.js",
-
+    devMiddleware: {
+      writeToDisk: true, // لانتاج مجلد app
     },
-    devServer: {
-        static: {
-            directory: path.join(__dirname, "app"),
-        },
-        port: 9000 ,
-        open: true,
-        hot: true,
-        compress: true,
-        historyApiFallback: true,
-    },
+    port: 9000,
+    open: true,
+    hot: false,
+    compress: true,
+    historyApiFallback: true,
+  },
 
-    module: {
-        rules: [
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: "html-loader",
-
-                    }
-                ]
-            },
-
-            {
-                test: /\.(sa|sc|c)ss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-            },
-            {
-
-                test: /\.(svg|eot|woff|woff2|ttf)$/,
-
-                exclude: /images/,
-
-                use: [
-
-                    {
-
-                        loader: "file-loader",
-
-                        options: {
-
-                            name: '[name].[ext]',
-
-                            outputPath: "assets/fonts",
-
-                        }
-
-                    }
-
-                ]
-
-            },
-
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          }
         ]
-    },
-    optimization: {
-        minimizer: [
-            new CssMinimizerPlugin(),
-        ],
-    },
-    plugins: [
-        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+      },
 
-        new MiniCssExtractPlugin({
-            filename: 'assets/css/style.css',
-        }),
-        new HtmlWebpackPlugin({
-            filename: "index.html",
-            template: "./src/index.html",
-        }),
-        new HtmlWebpackPlugin({
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
 
-            filename: "components/button.html",
-      
-            template: "./src/components/button.html",
-      
-          }),
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        exclude: /fonts/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: '[name].[ext]',
+              outputPath: "assets/images",
+            }
+          }
+        ]
+      },
+
+      {
+        test: /\.(svg|eot|woff|woff2|ttf)$/,
+        exclude: /images/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: '[name].[ext]',
+              outputPath: "assets/fonts",
+            }
+          }
+        ]
+      },
+
+
+
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(),
     ],
+  },
+  plugins: [
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+
+    new MiniCssExtractPlugin({
+      filename: 'assets/css/style.css',
+    }),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./src/index.html",
+    }),
+    new HtmlWebpackPlugin({
+
+      filename: "components/button.html",
+
+      template: "./src/components/button.html",
+
+    }),
+    new HtmlWebpackPlugin({
+
+      filename: "components/textfiled.html",
+
+      template: "./src/components/textfiled.html",
+
+    }),
+
+  ],
 
 }
 
