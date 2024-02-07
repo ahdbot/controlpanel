@@ -155,6 +155,14 @@ module.exports = {
       chunks: ['app']
 
     }),
+    new HtmlWebpackPlugin({
+
+      filename: "components/upload.html",
+
+      template: "./src/components/upload.html",
+      chunks: ['app', 'assest/js/upload']
+
+    }),
   ],
 
 }
