@@ -91,3 +91,16 @@ $upload-size: 400px;
         margin-right: inherit;
     }
 }
+
+// state
+.has-image.c-upload {
+    .c-upload__label--remove {
+        display: block;
+    }
+    .c-upload__image {
+        background: none;
+        img {
+            display: block;
+        }
+    }
+}
